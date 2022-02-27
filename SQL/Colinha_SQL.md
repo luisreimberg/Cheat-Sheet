@@ -1,4 +1,6 @@
-# **SQL Cheat Sheets - Princípais Comandos e Configurações**
+# **SQL CHEAT SHEETS - PRINCIPAIS COMANDOS**
+
+A ideia de criar este repositório surgiu durante meus estudos de SQL pela plataforma da [Alura](https://www.alura.com.br/). O objetivo foi sintetizar os principais comandos SQL e consultá-los sempre que for necessário. E claro, também ajudar as pessoas que também estão aprendendo sobre SQL, assim como eu! 😁
 
 ![image](https://user-images.githubusercontent.com/94421216/155864598-5f513fe3-7297-4120-ab75-b9a7d35a4d46.png)
 
@@ -14,17 +16,19 @@
     * [Incluir Registro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#incluir-registro-em-uma-tabela)
     * [Editar Registro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#editando-registro-dentro-da-tabela)
     * [Excluir Registro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#excluindo-registro-dentro-da-tabela)
-3. [Configurando colunas](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#configurando-colunas)
+3. [Colunas](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#configurando-colunas)
     * [Criar Coluna](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#criar-coluna)
     * [Definir Coluna Como Chave Primária](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#alterando-uma-coluna-para-chave-prim%C3%A1ria-n%C3%A3o-permite-registro-duplicado-naquela-coluna)
-4. [Seleção]()
-   *[]()
-   *[]()
-   *[]()
-   *[]()
-   *[]()
+4. [Seleção](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o)
+   * [Seleção Simples](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-simples)
+   * [Limitando a seleção](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-limitando-o-n%C3%BAmero-de-linhas)
+   * [Filtro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-com-filtro)
+   * [Filtro de Texto](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#filtro-de-texto)
+   * [Ordenação](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#ordenar)
+# Créditos
+Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
 
-# Banco de Dados
+# BANCO DE DADOS
 ## **Criar banco de dados simples (com configuração padrão)**
 ```diff
  CREATE DATABASE nome_banco_de_dados; 
@@ -39,7 +43,7 @@ DROP DATABASE nome_banco_de_dados;
 ```
 Também é possível excluir o banco de dados através do assistente (No MySQL: clicar com o botão direito no banco de dados > Drop Schema)
 
-# Tabela
+# TABELA
 ## **Criar tabela**
 ```diff
 USE nome_banco_de_dados;
@@ -58,7 +62,7 @@ LIMITE_CREDITO FLOAT,
 PRIMEIRA_COMPRA BIT(1));
 ```
 
-A especificação do tipo de dado vai variar de acordo com os dados que serão inseridos na coluna. Para consultar mais detalhes [clique aqui](https://www.w3schools.com/sql/sql_datatypes.asp)
+A especificação do tipo de dado vai variar de acordo com os dados que serão inseridos na coluna. Para consultar mais detalhes [clique aqui](https://www.w3schools.com/sql/sql_datatypes.asp).
 
 
 ## **Excluir tabela**
@@ -91,7 +95,7 @@ VALUES('1040107', 'Light - 350 ml - Melância', 'Lata', '350 ml','Melância', 4.
 SELECT * FROM tbproduto;
 ```
 
-## **Editando registro dentro da tabela**
+## **Editar registro dentro da tabela**
 ```diff
 USE nome_banco_de_dados;
 UPDATE nome_tabela SET nome_coluna = 'novo_valor', nome_coluna2 = 'novo_valor_2'
@@ -104,7 +108,7 @@ UPDATE tbproduto SET EMBALAGEM = 'Lata', PRECO_LISTA = 2.46
 WHERE PRODUTO = '544931';
 ```
 
-## **Excluindo registro dentro da tabela**
+## **Excluir registro dentro da tabela**
 ```diff
 USE nome_banco_de_dados;
 DELETE FROM nome_tabela WHERE coluna_referencia = 'referencia';
@@ -115,7 +119,7 @@ Exemplo:
 USE sucos;
 DELETE FROM tbproduto WHERE PRODUTO = '1078680';
 ```
-# Colunas
+# COLUNAS
 
 ## **Criar coluna**
 Para criar uma coluna em uma tabela existente, basta seguir:
@@ -135,7 +139,7 @@ USE sucos;
 ALTER TABLE tbproduto ADD PRIMARY KEY (PRODUTO);
 ```
 
-# Seleção
+# SELEÇÃO
 
 ## **Seleção simples**
 
