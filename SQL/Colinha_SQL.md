@@ -3,10 +3,10 @@
 
 
 # Index
-1. [Banco de Dados](https://github.com/luisreimberg/Cheat-Sheet/new/main#banco-de-dados)
-    * [Criar Banco de Dados](https://github.com/luisreimberg/Cheat-Sheet/new/main#criar-banco-de-dados-simples-com-configura%C3%A7%C3%A3o-padr%C3%A3o)
+1. [Banco de Dados](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#banco-de-dados)
+    * [Criar Banco de Dados](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#criar-banco-de-dados-simples-com-configura%C3%A7%C3%A3o-padr%C3%A3o)
     * [Excluir Banco de Dados](https://github.com/luisreimberg/Cheat-Sheet/new/main#excluir-banco-de-dados)
-2. [Tabela](https://github.com/luisreimberg/Cheat-Sheet/new/main#tabela)
+2. [Tabela](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#tabela)
     * [Criar Tabela](#arithmetic)
     * [Excluir Tabela](https://github.com/luisreimberg/Cheat-Sheet/new/main#excluir-tabela)
     * [Selecionar Tabela](https://github.com/luisreimberg/Cheat-Sheet/new/main#selecionar-tabela)
