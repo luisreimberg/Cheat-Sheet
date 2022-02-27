@@ -17,7 +17,12 @@
 3. [Configurando colunas](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#configurando-colunas)
     * [Criar Coluna](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#criar-coluna)
     * [Definir Coluna Como Chave Primária](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#alterando-uma-coluna-para-chave-prim%C3%A1ria-n%C3%A3o-permite-registro-duplicado-naquela-coluna)
-
+4. [Seleção]()
+   *[]()
+   *[]()
+   *[]()
+   *[]()
+   *[]()
 
 # Banco de Dados
 ## **Criar banco de dados simples (com configuração padrão)**
@@ -125,7 +130,97 @@ USE nome_banco_de_dados;
 ALTER TABLE nome_tabela ADD PRIMARY KEY (nome_coluna);
 ```
 Exemplo:
-```diff
+```
 USE sucos;
 ALTER TABLE tbproduto ADD PRIMARY KEY (PRODUTO);
 ```
+
+# Seleção
+
+## **Seleção simples**
+
+O comando SELECT permite recuperar os dados de um objeto do banco de dados, como uma tabela, view e, em alguns casos, uma stored procedure (alguns bancos de dados permitem a criação de procedimentos que retornam valor). A sintaxe mais básica do comando é:
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela;
+```
+Exemplo:
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente;
+SELECT * FROM tbclientes;
+```
+## **Seleção limitando o número de linhas**
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela LIMIT numero_linhas;
+```
+Exemplo:
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente LIMIT 5;
+```
+
+## **Seleção com filtro**
+O comando WHERE permite ao SQL passar condições de filtragem.
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela
+WHERE condição;
+```
+Exemplo:
+```
+USE sucos;
+SELECT CPF, NOME, IDADE FROM tbcliente
+WHERE IDADE = 30;
+
+SELECT CPF, NOME, IDADE FROM tbcliente
+WHERE ESTADO = 'SP' OR UF = 'RJ';
+```
+## **FILTRO DE TEXTO**
+Para busca parcial de string, o SELECT fornece o operador LIKE.
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela
+WHERE condição LIKE '%TEXTO%';
+```
+Exemplo:
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente
+WHERE NOME LIKE '%SILVA%';
+
+SELECT CPF, NOME FROM tbcliente
+WHERE NOME LIKE 'MARIA%';
+```
+
+Uma observação: em alguns bancos de dados, a máscara de filtro não é representada por %. Consulte a referência do banco para verificar o caractere correto.
+
+Por padrão, a SQL diferencia caixa baixa de caixa alta. Para eliminar essa diferença, utiliza a função UPPER. Veja abaixo:
+
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente
+WHERE UPPER(NOME) LIKE 'MARIA %SILVA%'
+```
+
+## **ORDENAR**
+A ordenação pode ser definida com o comando ORDER BY.
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela
+ORDER BY condição;
+```
+
+Exemplo:
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente
+ORDER BY NOME;
+```
+
+A utilização da palavra DESC garante uma ordenação invertida
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente
+ORDER BY ESTADO DESC
