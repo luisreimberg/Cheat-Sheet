@@ -1,6 +1,6 @@
 # **SQL CHEAT SHEETS - PRINCIPAIS COMANDOS**
 
-A ideia de criar este repositório surgiu durante meus estudos de SQL pela plataforma da [Alura](https://www.alura.com.br/). O objetivo foi sintetizar os principais comandos SQL e consultá-los sempre que for necessário. E claro, também ajudar as pessoas que também estão aprendendo sobre SQL, assim como eu! 😁
+A ideia de criar este repositório surgiu durante meus estudos de SQL pela plataforma da [Alura](https://www.alura.com.br/). O objetivo foi sintetizar os principais comandos SQL e consultá-los sempre que for necessário. E claro, também ajudar as pessoas que estão aprendendo sobre SQL, assim como eu! 😁
 
 ![image](https://user-images.githubusercontent.com/94421216/155864598-5f513fe3-7297-4120-ab75-b9a7d35a4d46.png)
 
