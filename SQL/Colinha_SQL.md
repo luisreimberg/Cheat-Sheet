@@ -15,7 +15,7 @@
     * [Editar Registro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#editando-registro-dentro-da-tabela)
     * [Excluir Registro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#excluindo-registro-dentro-da-tabela)
 3. [Configurando colunas](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#configurando-colunas)
-    * [Criar Coluna]
+    * [Criar Coluna](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#criar-coluna)
     * [Definir Coluna Como Chave Primária](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#alterando-uma-coluna-para-chave-prim%C3%A1ria-n%C3%A3o-permite-registro-duplicado-naquela-coluna)
 
 
@@ -117,7 +117,7 @@ Para criar uma coluna em uma tabela existente, basta seguir:
 ```diff
 USE nome_banco_de_dados;
 ALTER TABLE nome_tabela ADD COLUMN (nome_nova_coluna data_type);
-
+```
 ## **Alterar coluna para chave primária**
 Ao alterar uma coluna para chave primária não será possível adicionar valores iguais na coluna. Normalmente é utilizada para registros únicos: CPF, Código de produto, Registro de entrada, Número de nota fiscal, etc.
 ```diff
@@ -129,4 +129,3 @@ Exemplo:
 USE sucos;
 ALTER TABLE tbproduto ADD PRIMARY KEY (PRODUTO);
 ```
-# **Criar coluna**
