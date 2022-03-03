@@ -23,8 +23,8 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
    * [Seleção Simples](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-simples)
    * [Limitando a seleção](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-limitando-o-n%C3%BAmero-de-linhas)
    * [Filtro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-com-filtro)
-   * [Filtro de Texto](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#filtro-de-texto)
    * [Ordenação](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#ordenar)
+   *    * [LIKE](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#filtro-de-texto)
    * [AND](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#and)
    * [OR](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#or)
    * [BETWEEN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#between)
@@ -187,7 +187,30 @@ WHERE IDADE = 30;
 SELECT CPF, NOME, IDADE FROM tbcliente
 WHERE ESTADO = 'SP' OR UF = 'RJ';
 ```
-## **FILTRO DE TEXTO**
+
+## **ORDENAR**
+A ordenação pode ser definida com o comando ORDER BY.
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela
+ORDER BY condição;
+```
+
+Exemplo:
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente
+ORDER BY NOME;
+```
+
+A utilização da palavra DESC garante uma ordenação invertida
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente
+ORDER BY ESTADO DESC
+```
+
+## **LIKE - FILTRO DE TEXTO**
 Para busca parcial de string, o SELECT fornece o operador LIKE.
 ```
 USE nome_banco_de_dados;
@@ -214,27 +237,6 @@ SELECT CPF, NOME FROM tbcliente
 WHERE UPPER(NOME) LIKE 'MARIA %SILVA%'
 ```
 
-## **ORDENAR**
-A ordenação pode ser definida com o comando ORDER BY.
-```
-USE nome_banco_de_dados;
-SELECT lista_de_campos FROM nome_tabela
-ORDER BY condição;
-```
-
-Exemplo:
-```
-USE sucos;
-SELECT CPF, NOME FROM tbcliente
-ORDER BY NOME;
-```
-
-A utilização da palavra DESC garante uma ordenação invertida
-```
-USE sucos;
-SELECT CPF, NOME FROM tbcliente
-ORDER BY ESTADO DESC
-```
 
 ## **AND**
 O operador AND (E) mostra um registro se todas as condições forem verdadeiras.
