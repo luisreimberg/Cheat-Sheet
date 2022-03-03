@@ -32,6 +32,7 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
    * [IN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#in)
    * [DISTINCT](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#distinct)
    * [GROUP BY](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#group-by)
+   * [HAVING](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#having)
 
 # Créditos
 Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
@@ -356,4 +357,77 @@ GROUP BY ESTADO, BAIRRO
 ORDER BY BAIRRO;
 ```
 Aparecerá na primeira coluna o ESTADO, na segunda coluna os BAIRROS ORDENADOS da CIDADE do RIO DE JANEIRO e na terceira coluna com nome LIMITE, o valor com o LIMITE TOTAL de CADA BAIRRO.
+
+## **HAVING**
+O HAVING é uma condição (filtro) que se aplica ao resultado de uma agregação.
+
+```
+USE nome_banco_de_dados;
+SELECT coluna_1, SUM(coluna_2) AS nome_coluna_agrupada FROM nome_tabela GROUP BY coluna_1
+HAVING SUM(nome_coluna_agrupada) > 10
+```
+O comando HAVING vai filtrar o resultado agrupado e será exibido somente os resultados maior que 10.
+
+Exemplos:
+```
+SELECT ESTADO, SUM(LIMITE_DE_CREDITO) AS SOMA_LIMITE FROM tabela_de_clientes
+GROUP BY ESTADO HAVING SUM(LIMITE_DE_CREDITO) > 900000;
+```
+
+```
+SELECT EMBALAGEM, MAX(PRECO_DE_LISTA) AS MAIOR_PRECO, MIN(PRECO_DE_LISTA) AS MENOR_PRECO FROM tabela_de_produtos
+GROUP BY EMBALAGEM HAVING SUM(PRECO_DE_LISTA) <= 80;
+```
+
+```
+SELECT EMBALAGEM, MAX(PRECO_DE_LISTA) AS MAIOR_PRECO, MIN(PRECO_DE_LISTA) AS MENOR_PRECO FROM tabela_de_produtos
+GROUP BY EMBALAGEM HAVING SUM(PRECO_DE_LISTA) <= 80 AND MAX(PRECO_DE_LISTA) >= 5;
+```
+
+## **CASE**
+Fazemos um teste em um ou mais campos e, dependendo do resultado, teremos um ou outro valor.
+
+```
+SELECT X,
+CASE
+    WHEN Y >= 8 AND Y <= 10 THEN 'OTIMO'
+    WHEN Y >= 7 AND Y < 8 THEN 'BOM'
+    WHEN Y >= 5 AND Y <= 7 THEN 'MEDIO'
+    ELSE 'RUIM'
+END
+FROM nome_tabela
+```
+Irá classificar a nota de cliente em ótimo, bom e médio.
+
+Exemplos:
+```
+SELECT NOME_DO_PRODUTO, PRECO_DE_LISTA,
+CASE 
+    WHEN PRECO_DE_LISTA >= 12 THEN 'PRODUTO CARO'
+    WHEN PRECO_DE_LISTA >= 7 AND PRECO_DE_LISTA < 12 THEN 'PRODUTO EM CONTA'
+    ELSE 'PRODUTO BARATO' 
+END AS STATUS_PRECO 
+FROM tabela_de_produtos;
+```
+Classificação de produtos em: PRODUTO CARO, PRODUTO EM CONTA E PRODUTO BARATO.
+
+```
+SELECT EMBALAGEM,
+CASE 
+   WHEN PRECO_DE_LISTA >= 12 THEN 'PRODUTO CARO'
+   WHEN PRECO_DE_LISTA >= 7 AND PRECO_DE_LISTA < 12 THEN 'PRODUTO EM CONTA'
+   ELSE 'PRODUTO BARATO' 
+END AS STATUS_PRECO, AVG(PRECO_DE_LISTA) AS PRECO_MEDIO
+FROM tabela_de_produtos
+GROUP BY EMBALAGEM, 
+CASE 
+    WHEN PRECO_DE_LISTA >= 12 THEN 'PRODUTO CARO'
+    WHEN PRECO_DE_LISTA >= 7 AND PRECO_DE_LISTA < 12 THEN 'PRODUTO EM CONTA'
+    ELSE 'PRODUTO BARATO' 
+END
+ORDER BY EMBALAGEM
+```
+Esse código foi bem mais complexo. Para facilitar o entendimento, o comando acima vai aparecer a classificação e agrupamento da seguinte forma:
+
+![image](https://user-images.githubusercontent.com/94421216/156492476-c2f7768d-5c62-478e-9fa7-f319aaaa406f.png)
 
