@@ -20,16 +20,17 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
     * [Criar Coluna](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#criar-coluna)
     * [Definir Coluna Como Chave Primária](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#alterando-uma-coluna-para-chave-prim%C3%A1ria-n%C3%A3o-permite-registro-duplicado-naquela-coluna)
 4. [Seleção](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o)
-   * [Seleção Simples](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-simples)
-   * [Limitando a seleção](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-limitando-o-n%C3%BAmero-de-linhas)
-   * [Filtro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-com-filtro)
-   * [Ordenação](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#ordenar)
+   * [SELECT](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#select)
+   * [WHERE](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#where)
+   * [LIMIT](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#limit)
+   * [ORDER BY](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#order-by)
    * [LIKE](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#like)
    * [AND](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#and)
    * [OR](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#or)
    * [BETWEEN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#between)
    * [NOT](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#not)
    * [IN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#in)
+   * [DISTINCT]()
 
 # Créditos
 Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
@@ -147,7 +148,7 @@ ALTER TABLE tbproduto ADD PRIMARY KEY (PRODUTO);
 
 # SELEÇÃO
 
-## **Seleção simples**
+## **SELECT**
 
 O comando SELECT permite recuperar os dados de um objeto do banco de dados, como uma tabela, view e, em alguns casos, uma stored procedure (alguns bancos de dados permitem a criação de procedimentos que retornam valor). A sintaxe mais básica do comando é:
 ```
@@ -160,18 +161,7 @@ USE sucos;
 SELECT CPF, NOME FROM tbcliente;
 SELECT * FROM tbclientes;
 ```
-## **Seleção limitando o número de linhas**
-```
-USE nome_banco_de_dados;
-SELECT lista_de_campos FROM nome_tabela LIMIT numero_linhas;
-```
-Exemplo:
-```
-USE sucos;
-SELECT CPF, NOME FROM tbcliente LIMIT 5;
-```
-
-## **Seleção com filtro**
+## **WHERE**
 O comando WHERE permite ao SQL passar condições de filtragem.
 ```
 USE nome_banco_de_dados;
@@ -188,7 +178,20 @@ SELECT CPF, NOME, IDADE FROM tbcliente
 WHERE ESTADO = 'SP' OR UF = 'RJ';
 ```
 
-## **ORDENAR**
+## **LIMIT**
+
+O comando LIMIT limita o número de linhas exibida. Ele sempre deve ficar no final da consulta.
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela LIMIT numero_linhas;
+```
+Exemplo:
+```
+USE sucos;
+SELECT CPF, NOME FROM tbcliente LIMIT 5;
+```
+
+## **ORDER BY**
 A ordenação pode ser definida com o comando ORDER BY.
 ```
 USE nome_banco_de_dados;
@@ -305,3 +308,21 @@ SELECT * FROM tabela_de_clientes WHERE CIDADE IN ('Rio de Janeiro', 'São Paulo'
 AND IDADE >= 20;
 ```
 Irá retornar os cliente que estão na cidade Rio de Janeiro e São Paulo e com idade maior ou igual a 20 anos.
+
+## **DISTINCT**
+A cláusula DISTINCT elimina as linhas repetidas da consulta.
+```
+USE nome_banco_de_dados;
+SELECT DISTINCT lista_de_campos FROM nome_tabela;
+```
+Exemplo:
+```
+SELECT DISTINCT EMBALAGEM, TAMANHO FROM tabela_de_produtos
+WHERE SABOR = 'LARANJA'
+```
+Irá retornar o tipo de embalagem e o tamanho dos sucos de laranja, sem a repetição desses valores. O comando funciona de forma semelhante ao comando unique do Python (Pandas).
+
+
+
+
+
