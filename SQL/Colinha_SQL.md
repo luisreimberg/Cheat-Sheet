@@ -24,7 +24,7 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
    * [Limitando a seleção](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-limitando-o-n%C3%BAmero-de-linhas)
    * [Filtro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-com-filtro)
    * [Ordenação](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#ordenar)
-   *    * [LIKE](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#filtro-de-texto)
+   * [LIKE](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#like)
    * [AND](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#and)
    * [OR](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#or)
    * [BETWEEN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#between)
@@ -210,7 +210,7 @@ SELECT CPF, NOME FROM tbcliente
 ORDER BY ESTADO DESC
 ```
 
-## **LIKE - FILTRO DE TEXTO**
+## **LIKE**
 Para busca parcial de string, o SELECT fornece o operador LIKE.
 ```
 USE nome_banco_de_dados;
