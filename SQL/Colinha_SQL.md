@@ -25,6 +25,12 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
    * [Filtro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-com-filtro)
    * [Filtro de Texto](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#filtro-de-texto)
    * [Ordenação](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#ordenar)
+   * [AND]
+   * [OR]
+   * [BETWEEN]
+   * [NOT]
+   * [IN]
+
 # Créditos
 Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
 
@@ -228,3 +234,72 @@ A utilização da palavra DESC garante uma ordenação invertida
 USE sucos;
 SELECT CPF, NOME FROM tbcliente
 ORDER BY ESTADO DESC
+```
+
+## **AND**
+O operador AND (E) mostra um registro se todas as condições forem verdadeiras.
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela 
+WHERE A AND B;
+```
+Exemplo:
+```
+USE sucos;
+SELECT * FROM tabela_de_produtos 
+WHERE SABOR = 'Manga' AND TAMANHO = '470 ml'
+```
+Irá retornar os sucos de sabor manga que o tamanho seja de 470 ml.
+
+## **OR**
+O operador OR (OU) mostra um registro se pelo menos uma das condições for verdadeira.
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela 
+WHERE A OR B;
+```
+Exemplo:
+```
+SELECT * FROM tabela_de_produtos WHERE SABOR = 'Manga'
+OR TAMANHO = '470 ml';
+```
+Irá retornar os sucos com o sabor manga e os demais sucos com tamanho de 470 ml.
+
+## **BETWEEN**
+O comando BETWEEN é utilizado para selecionar um determinado range de registros em uma tabela.
+```
+USE nome_banco_de_dados;
+SELECT campos FROM tabela WHERE campo BETWEEN 0 AND 1;
+```
+Exemplo:
+```
+SELECT * FROM tabela_de_produtos WHERE PRECO_DE_LISTA BETWEEN 19.00 AND 25.80;
+```
+Irá retornar os produtos com valores entre 19.00 e 25.80
+
+## **NOT**
+o operador NOT inverte o estado lógico.
+```
+USE nome_banco_de_dados;
+SELECT lista_de_campos FROM nome_tabela 
+WHERE A OR B;
+```
+Exemplo:
+```
+SELECT * FROM tabela_de_produtos WHERE NOT (SABOR = 'Manga'
+AND TAMANHO = '470 ml');
+```
+Irá retornar os sucos que o sabor não é manga com tamanho de 470 ml.
+
+## **IN**
+O operador IN é utilizado quando desejamos consultar uma tabela, filtrando o valor de um de seus campos a partir de uma lista e possibilidades. Enquanto o operador de comparação de igualdade (=) avalia se os dois valores são iguais, o IN permite verificar se o valor de um campo se encontra em uma lista. Sua sintaxe é a seguinte:
+```
+USE nome_banco_de_dados;
+SELECT campos FROM tabela WHERE campo IN (valor1, valor2, valor3);
+```
+Exemplo:
+```
+SELECT * FROM tabela_de_clientes WHERE CIDADE IN ('Rio de Janeiro', 'São Paulo')
+AND IDADE >= 20;
+```
+Irá retornar os cliente que estão na cidade Rio de Janeiro e São Paulo e com idade maior ou igual a 20 anos.
