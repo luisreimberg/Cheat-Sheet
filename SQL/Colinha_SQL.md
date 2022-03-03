@@ -25,11 +25,11 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
    * [Filtro](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#sele%C3%A7%C3%A3o-com-filtro)
    * [Filtro de Texto](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#filtro-de-texto)
    * [Ordenação](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#ordenar)
-   * [AND]
-   * [OR]
-   * [BETWEEN]
-   * [NOT]
-   * [IN]
+   * [AND](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#and)
+   * [OR](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#or)
+   * [BETWEEN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#between)
+   * [NOT](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#not)
+   * [IN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#in)
 
 # Créditos
 Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
