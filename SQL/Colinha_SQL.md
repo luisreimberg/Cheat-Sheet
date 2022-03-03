@@ -30,7 +30,8 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
    * [BETWEEN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#between)
    * [NOT](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#not)
    * [IN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#in)
-   * [DISTINCT]()
+   * [DISTINCT](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#distinct)
+   * [GROUP BY](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#group-by)
 
 # Créditos
 Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
@@ -322,7 +323,37 @@ WHERE SABOR = 'LARANJA'
 ```
 Irá retornar o tipo de embalagem e o tamanho dos sucos de laranja, sem a repetição desses valores. O comando funciona de forma semelhante ao comando unique do Python (Pandas).
 
+## **GROUP BY**
+O comando GROUP BY agrupa linhas baseado em semelhanças entre elas. Por exemplo, em uma tabela de vendas no ano eu quero saber o total de receita que obtive por cliente. O comando GROUP BY vai agrupar o total de vendas por cliente. O comando também pode ser utilizado junto com funções de agregação:
 
+FUNÇÃO | DESCRIÇÃO
+--------- | ------
+SUM | SOMA
+MAX | MÁXIMO
+MIN | MÍNIMO
+AVG | MÉDIA
+COUNT | CONTAGEM DE OCORRÊNCIAS
 
+Ao utilizar uma função, logo após é necessário utilizar o comando **AS** (alias) para nomear a coluna agrupada.
 
+Na prática funciona desta forma:
+```
+USE nome_banco_de_dados;
+SELECT coluna_1, SUM(coluna_2) AS nome_coluna_agrupada FROM nome_tabela GROUP BY coluna_1;
+```
+Irá retornar os valores unicos da coluna_1 e a soma dos valores da coluna_2.
+
+Exemplos:
+```
+SELECT BAIRRO, SUM(LIMITE_DE_CREDITO) AS LIMITE FROM tabela_de_clientes 
+GROUP BY BAIRRO;
+```
+Retornará todos os bairros, na coluna LIMITE terá o limite de crédito total de cada bairro.
+```
+SELECT ESTADO, BAIRRO, SUM(LIMITE_DE_CREDITO) AS LIMITE FROM tabela_de_clientes 
+WHERE CIDADE = 'RIO DE JANEIRO' 
+GROUP BY ESTADO, BAIRRO 
+ORDER BY BAIRRO;
+```
+Aparecerá na primeira coluna o ESTADO, na segunda coluna os BAIRROS ORDENADOS da CIDADE do RIO DE JANEIRO e na terceira coluna com nome LIMITE, o valor com o LIMITE TOTAL de CADA BAIRRO.
 
