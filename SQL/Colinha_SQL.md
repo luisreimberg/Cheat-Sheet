@@ -33,6 +33,7 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
    * [DISTINCT](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#distinct)
    * [GROUP BY](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#group-by)
    * [HAVING](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#having)
+   * [CASE](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#case)
 
 # Créditos
 Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
