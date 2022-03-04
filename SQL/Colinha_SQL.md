@@ -34,6 +34,13 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
    * [GROUP BY](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#group-by)
    * [HAVING](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#having)
    * [CASE](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#case)
+   * [JOINs](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#joins)
+      * [INNER JOIN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#inner-join)
+      * [LEFT JOIN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#left-join)
+      * [RIGHT JOIN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#right-join)
+      * [FULL JOIN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#full-join)
+      * [CROSS JOIN](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#cross-join)
+    * [UNION](https://github.com/luisreimberg/Cheat-Sheet/blob/main/SQL/Colinha_SQL.md#union)
 
 # Créditos
 Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
@@ -432,3 +439,141 @@ Esse código foi bem mais complexo. Para facilitar o entendimento, o comando aci
 
 ![image](https://user-images.githubusercontent.com/94421216/156492476-c2f7768d-5c62-478e-9fa7-f319aaaa406f.png)
 
+## **JOINs**
+Possibilidade de unir uma ou mais tabelas através de campos em comuns. Existem vários tipos de JOINs.
+
+## **INNER JOIN**
+Retorna somente quando temos chaves correspondentes
+```
+SELECT lista_de_campos FROM nome_tabela_A
+INNER JOIN nome_tabela_B
+ON A.campo_em_comum = B.campo_em_comum
+```
+Exemplo:
+```
+SELECT tabela_de_vendedores.BAIRRO,
+tabela_de_vendedores.NOME,
+tabela_de_clientes.BAIRRO,
+tabela_de_clientes.NOME FROM tabela_de_vendedores 
+INNER JOIN tabela_de_clientes
+ON tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO
+```
+Uniu os vendedores e clientes através do bairro.
+
+![image](https://user-images.githubusercontent.com/94421216/156686774-a493e199-0333-4080-832d-32e8f748cf99.png)
+
+## **LEFT JOIN**
+Retorna todos da tabela da esquerda e somente os correspondentes da tabela da direita
+```
+SELECT lista_de_campos FROM nome_tabela_A
+LEFT JOIN nome_tabela_B
+ON A.campo_em_comum = B.campo_em_comum
+```
+Exemplo:
+```
+SELECT tabela_de_vendedores.BAIRRO,
+tabela_de_vendedores.NOME, DE_FERIAS,
+tabela_de_clientes.BAIRRO,
+tabela_de_clientes.NOME FROM tabela_de_vendedores 
+LEFT JOIN tabela_de_clientes
+ON tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO
+```
+Uniu os vendedores e clientes através do bairro, e também retornou um vendedor do bairro Copacabana onde não há clientes no bairro. Ou seja, retornou todos os valores selecionados da **tabela 1** e os valores correspondentes da **tabela 2**. 
+
+![image](https://user-images.githubusercontent.com/94421216/156687546-6aea48cd-f4a6-4c48-b0fe-963e568fe2b7.png)
+
+
+## **RIGHT JOIN**
+Retorna todos da tabela da direita e somente os correspondentes da direita
+```
+SELECT lista_de_campos FROM nome_tabela_B
+RIGHT JOIN nome_tabela_A
+ON A.campo_em_comum = B.campo_em_comum
+```
+Exemplo:
+```
+SELECT tabela_de_vendedores.BAIRRO,
+tabela_de_vendedores.NOME, DE_FERIAS,
+tabela_de_clientes.BAIRRO,
+tabela_de_clientes.NOME FROM tabela_de_vendedores 
+RIGHT JOIN tabela_de_clientes
+ON tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO;
+```
+Também uniu os vendedores e clientes através do bairro. Porém, note que para vários clientes não existe um vendedor no mesmo bairro. Em outras palavras, retornou todos os valores selecionados da **tabela 2** e os valores correspondentes da **tabela 1**.
+
+![image](https://user-images.githubusercontent.com/94421216/156688764-b5d6bdd3-1f80-4af8-88de-ad62e8ea8587.png)
+
+## **FULL JOIN**
+Retorna todos os registros de todas as tabelas
+```
+SELECT lista_de_campos FROM nome_tabela_B
+FULL JOIN nome_tabela_A
+ON A.campo_em_comum = B.campo_em_comum
+```
+Exemplo:
+```
+SELECT tabela_de_vendedores.BAIRRO,
+tabela_de_vendedores.NOME, DE_FERIAS,
+tabela_de_clientes.BAIRRO,
+tabela_de_clientes.NOME FROM tabela_de_vendedores 
+FULL JOIN tabela_de_clientes
+ON tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO;
+```
+Irá retornar **todos** os registros da **tabela 1** e **tabela 2**. 
+
+Específicamente o MySQL, que é o Software que estou utilizando, não permite o comando FULL JOIN (por mais que o FULL JOIN esteja no padrão ANSI). Neste caso, existe uma forma de simular o FULL JOIN combinado o LEFT e RIGHT JOIN com o UNION.
+
+```
+SELECT tabela_de_vendedores.BAIRRO,
+tabela_de_vendedores.NOME, DE_FERIAS,
+tabela_de_clientes.BAIRRO,
+tabela_de_clientes.NOME FROM tabela_de_vendedores 
+LEFT JOIN tabela_de_clientes
+ON tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO
+UNION
+SELECT tabela_de_vendedores.BAIRRO,
+tabela_de_vendedores.NOME, DE_FERIAS,
+tabela_de_clientes.BAIRRO,
+tabela_de_clientes.NOME FROM tabela_de_vendedores 
+RIGHT JOIN tabela_de_clientes
+ON tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO;
+```
+![image](https://user-images.githubusercontent.com/94421216/156693094-d7d213af-4931-46a9-885a-6910d76e945d.png)
+
+## **CROSS JOIN**
+Retorna um produto cartesiano das duas tabelas.
+
+```
+SELECT lista_de_campos FROM nome_tabela_A, nome_tabela_B
+```
+
+🧐 Sim, não precisa escrever CROSS JOIN para executar o comando 🤓
+
+Exemplo:
+```
+SELECT tabela_de_vendedores.BAIRRO,
+tabela_de_vendedores.NOME, DE_FERIAS,
+tabela_de_clientes.BAIRRO,
+tabela_de_clientes.NOME FROM tabela_de_vendedores, tabela_de_clientes;
+```
+Irá retornar a análise combinatória da tabela 1 e tabela 2.
+
+## **UNION**
+Faz a união de duas ou mais tabelas. Como padrão ele não vai repetir linhas iguais, como o comando DISTINCT. Para que a união respeite as linhas iguais é necessário utilizar o comando UNION ALL.
+
+Observação: O UNION tem uma restrição. Para que ocorra a união as colunas e tipo de colunas das tabelas precisam ser iguais.
+
+```
+SELECT lista_de_campos FROM nome_tabela_A
+UNION
+SELECT lista_de_campos FROM nome_tabela_B
+```
+
+Exemplo:
+```
+SELECT BAIRRO, NOME, 'CLIENTE' AS TIPO FROM tabela_de_clientes
+UNION
+SELECT BAIRRO, NOME, 'VENDEDOR' AS TIPO FROM tabela_de_vendedores;
+```
+
+![image](https://user-images.githubusercontent.com/94421216/156693700-6909786a-2bbc-4f63-a46b-4b73f866932e.png)
