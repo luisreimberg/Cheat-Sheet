@@ -558,6 +558,9 @@ tabela_de_clientes.NOME FROM tabela_de_vendedores, tabela_de_clientes;
 ```
 Irá retornar a análise combinatória da tabela 1 e tabela 2.
 
+![image](https://user-images.githubusercontent.com/94421216/156694280-5632b2b3-8042-4eb5-b68c-00a48dc6064f.png)
+
+
 ## **UNION**
 Faz a união de duas ou mais tabelas. Como padrão ele não vai repetir linhas iguais, como o comando DISTINCT. Para que a união respeite as linhas iguais é necessário utilizar o comando UNION ALL.
 
