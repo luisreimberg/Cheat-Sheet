@@ -46,6 +46,7 @@ A ideia de criar este repositório surgiu durante meus estudos de SQL pela plata
 Agradecimentos especiais a [Alura](alura.com.br) por organizar e facilitar o aprendizado de milhares de estudantes, ao [Professor Victorino](https://www.linkedin.com/in/victorino-vila-1a160/) por ministrar as aulas de forma didática, objetiva e com ótimos exemplos e ao [Site DEVMidia](https://www.devmedia.com.br/sql-select-guia-para-iniciantes/29530) que me ajudou com alguns filtros SQL que estão neste guia. Obrigado!
 
 # BANCO DE DADOS
+
 ## **Criar banco de dados simples (com configuração padrão)**
 ```diff
  CREATE DATABASE nome_banco_de_dados; 
@@ -59,6 +60,34 @@ Também é possível criar o banco de dados através do assistente (No MySQL é 
 DROP DATABASE nome_banco_de_dados; 
 ```
 Também é possível excluir o banco de dados através do assistente (No MySQL: clicar com o botão direito no banco de dados > Drop Schema)
+
+## **Diagrama simples de um banco de dados com tabelas de venda** ##
+```mermaid
+flowchart LR
+    id1[(Banco de Dados)] ---> Vendedor & Cliente & Produtos
+    Vendedor --1--> B{Realiza}
+    
+    B --N--> E[Venda]
+    
+    Cliente --1--> C{Contém}
+    C --N--> E[Venda]
+    
+    E --1--> G{Possui}
+    
+    Produtos --1--> D{Contém}
+    D --1--> F[Itens Vendidos]
+    
+    G --N--> F
+
+    style Vendedor fill:#0046FF,stroke:#333,stroke-width:4px
+    style Cliente fill:#0046FF,stroke:#333,stroke-width:4px
+    style Produtos fill:#0046FF,stroke:#333,stroke-width:4px
+    style E fill:#35A59D,stroke:#333,stroke-width:4px
+    style F fill:#35A59D,stroke:#333,stroke-width:4px
+    
+ ```
+
+ 
 
 # TABELA
 ## **Criar tabela**
